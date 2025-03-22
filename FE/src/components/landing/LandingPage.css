@@ -1,0 +1,161 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: black;
+    margin: 0 auto;
+    max-width: 1280px;
+    min-height: 100vh;    
+    background-color: white;
+  }
+  
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    border-bottom: 1px solid #cecece;
+    box-shadow: 0 4px 8px 0 #cecece;
+  }
+
+  .header-logo {
+    padding: 0 20px;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 70px;
+    padding: 0;
+  }
+  
+  .content {
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 90%;
+  }
+
+  .profile-select {
+    display: flex;
+    margin-top: 30px;
+  }
+  
+  .profile-select label {
+    display: block;
+    margin: 10px 0;
+  }
+
+  p.form-label {
+    width: 500px;
+    text-align: left;
+  }
+
+  p.range-value {
+    margin-left: 20px;
+    width: 30px;
+    border: 1px solid #cecece;
+    padding: 5px;
+  }
+
+  .profile-other-data {
+    display: flex;
+    margin-top: 30px;
+  }
+
+  .profile-drop-down {
+    padding: 5px 10px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #032f5d;
+  }
+  
+  .upload {
+    margin-top: 50px;
+  }
+  
+  .custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #032f5d;
+    color: white;
+    border-radius: 4px;
+    border: 2px solid #032f5d;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #8fbef0;
+    color: #032f5d;
+    border-color: #8fbef0;
+  }
+  
+  #file-upload {
+    display: none;
+  }
+
+  .file-name {
+    margin-top: 50px;    
+    width: 100%;
+  }
+
+  .file-name h3 {
+    text-align: left;
+  }
+
+  .file-details-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .file-details-table td{
+    border: 1px solid lightgray;
+    padding: 10px;
+  }
+
+  .validate-profile-button {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #032f5d;
+    color: white;
+    border-radius: 4px;
+    border: 2px solid #032f5d;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .validate-profile-button:hover {
+    background-color: #8fbef0;
+    color: #032f5d;
+    border-color: #8fbef0;
+  }
+
+  .screening-questions {
+    display: flex;
+    flex-direction: column;
+  }
+  .screening-questions h4 {
+    text-align: left;    
+  }
+
+  .screening-questions ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .screening-questions ul li{
+    text-align: left;
+  }
+
+  .submit-choices-btn {
+    margin-top: 30px;
+    float: right;
+  }
+
+  .submit-choices-btn:hover {
+    background-color: #8fbef0;
+    color: #032f5d;
+    border-color: #8fbef0;
+  }
