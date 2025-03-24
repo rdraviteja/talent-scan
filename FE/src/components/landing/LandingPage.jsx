@@ -130,7 +130,59 @@ const LandingPage = () => {
     }));
     const prompt = answersForValidation(JSON.stringify(patchedData))
     const data = await aiService.generateResponse(prompt)
-    console.log(data?.content)
+    const jsonString = data.content.replace(/```json|```/g, '').trim();
+    const resultData = JSON.parse(jsonString);
+    
+    console.log('Parsed data:', resultData);
+    console.log(data?.content, resultData)
+    const emailParams = {
+      to: 'syam.vadlamudi@skillsoft.com',
+      subject: `Online Test Results for Candidate`,
+      text: `
+        Interview Results Summary:
+        ${data?.content || 'No content available'}
+        
+        Date: ${new Date().toLocaleDateString()}
+      `,
+      html: `
+        <h2>Online Test Results Summary</h2>
+        <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
+            <h3>Score: ${resultData.score}</h3>
+            <p style="color: ${resultData.is_valid ? '#28a745' : '#dc3545'};">
+              ${resultData.feedback}
+            </p>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <h3>Detailed Question Analysis</h3>
+            ${resultData.question_evaluations_with_answers.map((item, index) => `
+              <div style="margin-bottom: 20px; padding: 15px; border: 1px solid #dee2e6; border-radius: 5px;">
+                <p><strong>Question ${index + 1}:</strong> ${item.question}</p>
+                <p><strong>Options:</strong> <span>${item.options}</span></p>
+                <p><strong>Candidate's Answer:</strong> <span style="color: #dc3545;">${item.answer}</span></p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; color: #6c757d;">
+            <p>Date: ${new Date().toLocaleDateString()}</p>
+          </div>
+        </div>
+      `
+    };
+    const queryParams = new URLSearchParams(emailParams).toString();
+    const emailUrl = `http://localhost:9001/sendEmail?${queryParams}`;
+
+    const response = await fetch(emailUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const result = await response.json();
+    console.log('Email sent:', result);
+    
     setShowHRMessage(true)
   }
 
